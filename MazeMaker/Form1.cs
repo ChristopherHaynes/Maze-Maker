@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace MazeMaker
 {
-    public partial class Form1 : Form
+    public partial class MazeImageWindow : Form
     {
-        public Form1()
+        public MazeImageWindow()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void setImage(Bitmap image)
+        {
+            mazePictureBox.Image = image;
+            mazePictureBox.Update();
         }
     }
 }

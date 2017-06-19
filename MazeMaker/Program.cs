@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MazeMaker
 {
@@ -14,9 +15,19 @@ namespace MazeMaker
         [STAThread]
         static void Main()
         {
+            MazeGenerator mazeGen = new MazeGenerator(10, 10);
+
+            while (mazeGen.wallList.Count > 0)
+            {
+                mazeGen.selectWall();
+            }
+
+            BitmapCreator bmp = new BitmapCreator();
+            bmp.generateBitmap(mazeGen.mazeMap);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MazeImageWindow());            
         }
     }
 }
