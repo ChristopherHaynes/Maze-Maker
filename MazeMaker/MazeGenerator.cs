@@ -136,5 +136,62 @@ namespace MazeMaker
             //Remove this wall from the list as it has been turned into a path
             wallList.Remove(wall);
         }
+
+        private Wall findExit()
+        {
+            Wall entrance = new Wall();
+            //Find the top left path and mark that wall as the entrance
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++)
+                {
+                    if (mazeMap[j, i] == true)
+                    {
+                        entrance.wallX = j;
+                        entrance.wallY = i;                        
+                    }
+                }
+            }
+            return entrance;
+        }
+
+        private Wall findEntrance()
+        {
+            Wall exit = new Wall();
+            //Find the bottom right path and mark that wall as the exit
+            for (int i = width - 1; i > 0; i--) {
+                for (int j = height - 1; j > 0; j--)
+                {
+                    if (mazeMap[j, i] == true)
+                    {
+                        exit.wallX = j;
+                        exit.wallY = i;
+                    }
+                }
+            }
+            return exit;
+        }
+
+        public void finishPaths()
+        {
+            Wall entrance = findEntrance();
+            Wall exit = findExit();
+
+            int entranceX = entrance.wallX;
+            int entranceY = entrance.wallY;
+            int exitX = exit.wallX;
+            int exitY = exit.wallY;
+
+            //Connect the entrance to the top of the image
+            for (int i = entranceY - 1; i >= 0; i--)
+            {
+                mazeMap[entranceX, i] = true;
+            }
+
+            //Connect the exit to the bottom of the image
+            for (int i = exitY + 1; i < height; i++)
+            {
+                mazeMap[exitX, i] = true;
+            }
+        }
     }
 }

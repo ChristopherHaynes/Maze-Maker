@@ -34,6 +34,11 @@
             this.lblMazeHeight = new System.Windows.Forms.Label();
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.txtHeight = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblDirectory = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtDir = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mazePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +58,7 @@
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(93, 490);
+            this.btnGenerate.Location = new System.Drawing.Point(61, 489);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 1;
@@ -64,7 +69,7 @@
             // lblMazeWidth
             // 
             this.lblMazeWidth.AutoSize = true;
-            this.lblMazeWidth.Location = new System.Drawing.Point(57, 317);
+            this.lblMazeWidth.Location = new System.Drawing.Point(72, 317);
             this.lblMazeWidth.Name = "lblMazeWidth";
             this.lblMazeWidth.Size = new System.Drawing.Size(64, 13);
             this.lblMazeWidth.TabIndex = 2;
@@ -73,7 +78,7 @@
             // lblMazeHeight
             // 
             this.lblMazeHeight.AutoSize = true;
-            this.lblMazeHeight.Location = new System.Drawing.Point(54, 359);
+            this.lblMazeHeight.Location = new System.Drawing.Point(69, 359);
             this.lblMazeHeight.Name = "lblMazeHeight";
             this.lblMazeHeight.Size = new System.Drawing.Size(67, 13);
             this.lblMazeHeight.TabIndex = 3;
@@ -81,7 +86,7 @@
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(141, 314);
+            this.txtWidth.Location = new System.Drawing.Point(156, 314);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(54, 20);
             this.txtWidth.TabIndex = 4;
@@ -89,17 +94,67 @@
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(141, 356);
+            this.txtHeight.Location = new System.Drawing.Point(156, 356);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(54, 20);
             this.txtHeight.TabIndex = 5;
             this.txtHeight.Text = "50";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(156, 489);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblDirectory
+            // 
+            this.lblDirectory.AutoSize = true;
+            this.lblDirectory.Location = new System.Drawing.Point(24, 207);
+            this.lblDirectory.Name = "lblDirectory";
+            this.lblDirectory.Size = new System.Drawing.Size(77, 13);
+            this.lblDirectory.TabIndex = 7;
+            this.lblDirectory.Text = "Save Directory";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(47, 242);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(54, 13);
+            this.lblName.TabIndex = 8;
+            this.lblName.Text = "File Name";
+            // 
+            // txtDir
+            // 
+            this.txtDir.Location = new System.Drawing.Point(121, 207);
+            this.txtDir.Name = "txtDir";
+            this.txtDir.Size = new System.Drawing.Size(150, 20);
+            this.txtDir.TabIndex = 9;
+            this.txtDir.Text = "C:\\\\MazeImages\\";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(121, 242);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(150, 20);
+            this.txtName.TabIndex = 10;
+            this.txtName.Text = "MazeMap";
             // 
             // MazeImageWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 525);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtDir);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblDirectory);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtHeight);
             this.Controls.Add(this.txtWidth);
             this.Controls.Add(this.lblMazeHeight);
@@ -122,6 +177,11 @@
         private System.Windows.Forms.Label lblMazeHeight;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.TextBox txtHeight;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblDirectory;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtDir;
+        private System.Windows.Forms.TextBox txtName;
     }
 }
 

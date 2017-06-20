@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MazeMaker
 {
     public partial class MazeImageWindow : Form
     {
+        BitmapCreator bmp;
+
         public MazeImageWindow()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace MazeMaker
 
         public void setImage(Bitmap image)
         {
+            mazePictureBox.Refresh();
             mazePictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             mazePictureBox.BorderStyle = BorderStyle.Fixed3D;
             mazePictureBox.Image = image;
@@ -41,11 +45,28 @@ namespace MazeMaker
             {
                 mazeGen.selectWall();
             }
+            mazeGen.finishPaths();
 
-            BitmapCreator bmp = new BitmapCreator();
+            bmp = new BitmapCreator();
             bmp.generateBitmap(mazeGen.mazeMap);
-            Bitmap image = new Bitmap("MazeMap.bmp");
-            setImage(image);
+            btnSave.Enabled = true;
+
+           /* FileStream fs = File.Open("MazeMap.bmp", FileMode.Open);
+            Bitmap image = new Bitmap(fs);
+            fs.Close();
+            fs.Dispose(); */
+
+            setImage(bmp.mazeImage);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string dir = txtDir.Text.ToString();
+            string name = txtName.Text.ToString();
+
+            string saveLocation = dir + name + ".bmp";
+
+            bmp.saveBitmap(saveLocation);
         }
     }
 }

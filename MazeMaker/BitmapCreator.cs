@@ -11,6 +11,8 @@ namespace MazeMaker
 {
     class BitmapCreator
     {
+        public Bitmap mazeImage;
+
         public void generateBitmap(bool[,] rawMap)
         {
             int width, height;
@@ -18,7 +20,7 @@ namespace MazeMaker
             width = rawMap.GetLength(0);
             height = rawMap.GetLength(1);
 
-            Bitmap mazeImage = new Bitmap(width, height);
+            mazeImage = new Bitmap(width, height);
 
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++)
@@ -32,9 +34,12 @@ namespace MazeMaker
                         mazeImage.SetPixel(i, j, Color.Black);
                     }
                 }
-            }
+            }         
+        }
 
-            mazeImage.Save("MazeMap.bmp");
+        public void saveBitmap(string dir)
+        {
+            mazeImage.Save(dir);
         }       
     }
 }
