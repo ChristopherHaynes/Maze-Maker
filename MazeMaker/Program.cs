@@ -15,15 +15,7 @@ namespace MazeMaker
         [STAThread]
         static void Main()
         {
-            MazeGenerator mazeGen = new MazeGenerator(10, 10);
-
-            while (mazeGen.wallList.Count > 0)
-            {
-                mazeGen.selectWall();
-            }
-
-            BitmapCreator bmp = new BitmapCreator();
-            bmp.generateBitmap(mazeGen.mazeMap);
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

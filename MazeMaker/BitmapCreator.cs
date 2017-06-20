@@ -34,7 +34,7 @@ namespace MazeMaker
                 }
             }
 
-            mazeImage.Save("test.bmp");
+            mazeImage.Save("MazeMap.bmp");
         }       
     }
 }
