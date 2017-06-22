@@ -20,9 +20,9 @@ namespace MazeMaker
         Random rand = new Random();
 
         //2D Array representing the maze map
-        public bool[,] mazeMap;
+        private bool[,] mazeMap;
         //List of all the available unvisited wall positions
-        public List<Wall> wallList;
+        private List<Wall> wallList;
 
         //Initialise the generator and set the size of the maze map
         public MazeGenerator(int width, int height)
@@ -43,8 +43,25 @@ namespace MazeMaker
             updateWallList(startX, startY);
         }
 
+        public bool[,] generateMaze()
+        {
+            //Check to see if there are any more walls in the list
+            while (wallList.Count > 0)
+            {
+                selectWall();
+            }
+
+            //When the wall list is empty add the entrance and exit paths
+            if (wallList.Count == 0)
+            {
+                finishPaths();
+            }
+
+            return mazeMap;
+        }
+        
         //Add surrounding walls to the wall list
-        public void updateWallList(int tileX, int tileY)
+        private void updateWallList(int tileX, int tileY)
         {
             Wall newWall = new Wall();
 
@@ -91,18 +108,18 @@ namespace MazeMaker
         }
 
         //Randomly select a wall from the wall list, end program if the list is empty
-        public void selectWall()
+        private void selectWall()
         {
             if (wallList.Count > 0)
             {
                 int listPos = rand.Next(wallList.Count);
                 checkSurroundingTiles(wallList[listPos].wallX, wallList[listPos].wallY, wallList[listPos]);
-            }
+            }         
            
         }
 
         //Check surrounding tiles to see if they are paths
-        public void checkSurroundingTiles(int wallX, int wallY, Wall wall)
+        private void checkSurroundingTiles(int wallX, int wallY, Wall wall)
         {
             if (wallX > 1 && wallX < width - 2 && wallY > 1 && wallY < height - 2 && mazeMap[wallX, wallY] == false)
             {
@@ -134,44 +151,44 @@ namespace MazeMaker
                 }
             }
             //Remove this wall from the list as it has been turned into a path
-            wallList.Remove(wall);
+            wallList.Remove(wall);            
         }
 
         private Wall findExit()
         {
-            Wall entrance = new Wall();
+            Wall exit = new Wall();
             //Find the top left path and mark that wall as the entrance
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++)
                 {
                     if (mazeMap[j, i] == true)
                     {
-                        entrance.wallX = j;
-                        entrance.wallY = i;                        
-                    }
-                }
-            }
-            return entrance;
-        }
-
-        private Wall findEntrance()
-        {
-            Wall exit = new Wall();
-            //Find the bottom right path and mark that wall as the exit
-            for (int i = width - 1; i > 0; i--) {
-                for (int j = height - 1; j > 0; j--)
-                {
-                    if (mazeMap[j, i] == true)
-                    {
                         exit.wallX = j;
-                        exit.wallY = i;
+                        exit.wallY = i;                        
                     }
                 }
             }
             return exit;
         }
 
-        public void finishPaths()
+        private Wall findEntrance()
+        {
+            Wall entrance = new Wall();
+            //Find the bottom right path and mark that wall as the exit
+            for (int i = width - 1; i > 0; i--) {
+                for (int j = height - 1; j > 0; j--)
+                {
+                    if (mazeMap[j, i] == true)
+                    {
+                        entrance.wallX = j;
+                        entrance.wallY = i;
+                    }
+                }
+            }
+            return entrance;
+        }
+
+        private void finishPaths()
         {
             Wall entrance = findEntrance();
             Wall exit = findExit();

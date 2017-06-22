@@ -90,7 +90,7 @@
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(54, 20);
             this.txtWidth.TabIndex = 4;
-            this.txtWidth.Text = "50";
+            this.txtWidth.Text = "100";
             // 
             // txtHeight
             // 
@@ -98,7 +98,7 @@
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(54, 20);
             this.txtHeight.TabIndex = 5;
-            this.txtHeight.Text = "50";
+            this.txtHeight.Text = "100";
             // 
             // btnSave
             // 

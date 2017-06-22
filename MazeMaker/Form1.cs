@@ -41,20 +41,9 @@ namespace MazeMaker
             int height = int.Parse(txtHeight.Text);
             MazeGenerator mazeGen = new MazeGenerator(width,height);
 
-            while (mazeGen.wallList.Count > 0)
-            {
-                mazeGen.selectWall();
-            }
-            mazeGen.finishPaths();
-
             bmp = new BitmapCreator();
-            bmp.generateBitmap(mazeGen.mazeMap);
+            bmp.generateBitmap(mazeGen.generateMaze());
             btnSave.Enabled = true;
-
-           /* FileStream fs = File.Open("MazeMap.bmp", FileMode.Open);
-            Bitmap image = new Bitmap(fs);
-            fs.Close();
-            fs.Dispose(); */
 
             setImage(bmp.mazeImage);
         }
