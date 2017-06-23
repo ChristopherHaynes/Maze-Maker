@@ -18,9 +18,20 @@ namespace MazeMaker
         public MazeImageWindow()
         {
             InitializeComponent();
+
+            //Populate the drop down menu
             NameValue prim = new NameValue("Prim's Algorithm", "0");
+            NameValue backtrack = new NameValue("Recursive Backtracking", "1");
+            NameValue kruskal = new NameValue("Kruskal's Algorithm", "2");
             cmbAlgorithm.Items.Add(prim);
+            cmbAlgorithm.Items.Add(backtrack);
+            cmbAlgorithm.Items.Add(kruskal);
             cmbAlgorithm.SelectedIndex = 0;
+
+            //Fill the preview box with a black white gradient
+            Bitmap black = new Bitmap(1, 1);
+            black.SetPixel(0, 0, Color.Black);
+            setImage(black);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -64,18 +75,26 @@ namespace MazeMaker
             {
                 MazeGenerator mazeGen = new PrimMaze(width, height);
 
+                int dropdownSelection = cmbAlgorithm.SelectedIndex;
+                if (dropdownSelection == 0) { mazeGen = new PrimMaze(width, height); }
+                if (dropdownSelection == 1) { mazeGen = new BacktrackingMaze(width, height); }
+                if (dropdownSelection == 2) { mazeGen = new KruskalMaze(width, height); }
+
                 bmp = new BitmapCreator();
                 bmp.generateBitmap(mazeGen.generateMaze());
                 btnSave.Enabled = true;
 
                 //Generate a maze name
-                string type = cmbAlgorithm.Text;
-                if (type == "Prim's Algorithm") { type = "Prim_"; }
+                int type = cmbAlgorithm.SelectedIndex;
+                string typeName = "Maze_";
+                if (type == 0) { typeName = "Prim_"; }
+                if (type == 1) { typeName = "Backtrack_"; }
+                if (type == 2) { typeName = "Kruskal_"; }
 
                 string size = width.ToString() + "X" + height.ToString();
 
                 //If a file already exists add the next available number to the name
-                string name = type + size;
+                string name = typeName + size;
                 string numName = name;
                 int count = 1;
                 while (File.Exists(txtDir.Text + numName + ".bmp"))

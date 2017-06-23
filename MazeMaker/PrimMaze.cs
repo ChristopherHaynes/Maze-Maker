@@ -9,19 +9,13 @@ namespace MazeMaker
     //Generate a fresh maze to the presented parameters
     class PrimMaze : MazeGenerator
     {
-        //Co-ordinates for a wall position
-        struct Wall
-        {
-            public int wallX, wallY;
-        }
-
         //List of all the available unvisited wall positions
-        private List<Wall> wallList;
+        private List<Tile> wallList;
 
         //Initialise the generator and set the size of the maze map
         public PrimMaze(int width, int height)
         {
-            wallList = new List<Wall>();
+            wallList = new List<Tile>();
             this.width = width;
             this.height = height;
 
@@ -52,54 +46,7 @@ namespace MazeMaker
             }
 
             return mazeMap;
-        }
-        
-        //Add surrounding walls to the wall list
-        private void updateWallList(int tileX, int tileY)
-        {
-            Wall newWall = new Wall();
-
-            //North
-            if (tileY + 1 < height)
-            {
-                if (mazeMap[tileX, tileY + 2] == false)
-                {
-                    newWall.wallX = tileX;
-                    newWall.wallY = tileY + 2;
-                    wallList.Add(newWall);
-                }
-            }
-            //East
-            if (tileX + 1 < width)
-            {
-                if (mazeMap[tileX + 2, tileY] == false)
-                {
-                    newWall.wallX = tileX + 2;
-                    newWall.wallY = tileY;
-                    wallList.Add(newWall);
-                }
-            }
-            if (tileY - 2 > 0)
-            {
-                //South
-                if (mazeMap[tileX, tileY - 2] == false)
-                {
-                    newWall.wallX = tileX;
-                    newWall.wallY = tileY - 2;
-                    wallList.Add(newWall);
-                }
-            }
-            if (tileX - 2 > 0)
-            {
-                //West
-                if (mazeMap[tileX - 2, tileY] == false)
-                {
-                    newWall.wallX = tileX - 2;
-                    newWall.wallY = tileY;
-                    wallList.Add(newWall);
-                }
-            }
-        }
+        }             
 
         //Randomly select a wall from the wall list, end program if the list is empty
         private void selectWall()
@@ -107,13 +54,13 @@ namespace MazeMaker
             if (wallList.Count > 0)
             {
                 int listPos = rand.Next(wallList.Count);
-                checkSurroundingTiles(wallList[listPos].wallX, wallList[listPos].wallY, wallList[listPos]);
+                checkSurroundingTiles(wallList[listPos].x, wallList[listPos].y, wallList[listPos]);
             }         
            
         }
 
         //Check surrounding tiles to see if they are paths
-        private void checkSurroundingTiles(int wallX, int wallY, Wall wall)
+        private void checkSurroundingTiles(int wallX, int wallY, Tile wall)
         {
             if (wallX > 1 && wallX < width - 2 && wallY > 1 && wallY < height - 2 && mazeMap[wallX, wallY] == false)
             {
@@ -148,61 +95,35 @@ namespace MazeMaker
             wallList.Remove(wall);            
         }
 
-        private Wall findExit()
+        //Add surrounding walls to the wall list
+        private void updateWallList(int tileX, int tileY)
         {
-            Wall exit = new Wall();
-            //Find the top left path and mark that wall as the entrance
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++)
-                {
-                    if (mazeMap[i, j] == true)
-                    {
-                        exit.wallX = i;
-                        exit.wallY = j;                        
-                    }
-                }
-            }
-            return exit;
-        }
+            Tile newWall = new Tile();
 
-        private Wall findEntrance()
-        {
-            Wall entrance = new Wall();
-            //Find the bottom right path and mark that wall as the exit
-            for (int i = width - 1; i > 0; i--) {
-                for (int j = height - 1; j > 0; j--)
-                {
-                    if (mazeMap[i, j] == true)
-                    {
-                        entrance.wallX = i;
-                        entrance.wallY = j;
-                    }
-                }
-            }
-            return entrance;
-        }
-
-        private void finishPaths()
-        {
-            Wall entrance = findEntrance();
-            Wall exit = findExit();
-
-            int entranceX = entrance.wallX;
-            int entranceY = entrance.wallY;
-            int exitX = exit.wallX;
-            int exitY = exit.wallY;
-
-            //Connect the entrance to the top of the image
-            for (int i = entranceY - 1; i >= 0; i--)
+            //North
+            if (tileY + 1 < height && mazeMap[tileX, tileY + 2] == false)
             {
-                mazeMap[entranceX, i] = true;
+                    newWall.x = tileX;  newWall.y = tileY + 2;
+                    wallList.Add(newWall);
             }
-
-            //Connect the exit to the bottom of the image
-            for (int i = exitY + 1; i < height; i++)
+            //East
+            if (tileX + 1 < width && mazeMap[tileX + 2, tileY] == false)
             {
-                mazeMap[exitX, i] = true;
+                    newWall.x = tileX + 2; newWall.y = tileY;
+                    wallList.Add(newWall);
             }
-        }
+            //South
+            if (tileY - 2 > 0 && mazeMap[tileX, tileY - 2] == false)
+            {             
+                    newWall.x = tileX; newWall.y = tileY - 2;
+                    wallList.Add(newWall);
+            }
+            //West
+            if (tileX - 2 > 0 && mazeMap[tileX - 2, tileY] == false)
+            {
+                    newWall.x = tileX - 2; newWall.y = tileY;
+                    wallList.Add(newWall);
+            }
+        }   
     }
 }

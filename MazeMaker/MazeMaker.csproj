@@ -48,13 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BacktrackingMaze.cs" />
     <Compile Include="BitmapCreator.cs" />
+    <Compile Include="EllerMaze.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="KruskalMaze.cs" />
     <Compile Include="MazeGenerator.cs" />
     <Compile Include="PrimMaze.cs" />
     <Compile Include="Program.cs" />

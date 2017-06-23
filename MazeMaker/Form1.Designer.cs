@@ -42,6 +42,7 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.cmbAlgorithm = new System.Windows.Forms.ComboBox();
             this.lblAlgorithm = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mazePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,9 +51,9 @@
             this.mazePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mazePictureBox.Location = new System.Drawing.Point(297, 12);
+            this.mazePictureBox.Location = new System.Drawing.Point(322, 32);
             this.mazePictureBox.Name = "mazePictureBox";
-            this.mazePictureBox.Size = new System.Drawing.Size(500, 500);
+            this.mazePictureBox.Size = new System.Drawing.Size(460, 460);
             this.mazePictureBox.TabIndex = 0;
             this.mazePictureBox.TabStop = false;
             this.mazePictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -61,7 +62,7 @@
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(103, 226);
+            this.btnGenerate.Location = new System.Drawing.Point(111, 230);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 1;
@@ -72,7 +73,7 @@
             // lblMazeWidth
             // 
             this.lblMazeWidth.AutoSize = true;
-            this.lblMazeWidth.Location = new System.Drawing.Point(71, 131);
+            this.lblMazeWidth.Location = new System.Drawing.Point(79, 135);
             this.lblMazeWidth.Name = "lblMazeWidth";
             this.lblMazeWidth.Size = new System.Drawing.Size(64, 13);
             this.lblMazeWidth.TabIndex = 2;
@@ -81,7 +82,7 @@
             // lblMazeHeight
             // 
             this.lblMazeHeight.AutoSize = true;
-            this.lblMazeHeight.Location = new System.Drawing.Point(68, 173);
+            this.lblMazeHeight.Location = new System.Drawing.Point(76, 177);
             this.lblMazeHeight.Name = "lblMazeHeight";
             this.lblMazeHeight.Size = new System.Drawing.Size(67, 13);
             this.lblMazeHeight.TabIndex = 3;
@@ -89,7 +90,7 @@
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(155, 128);
+            this.txtWidth.Location = new System.Drawing.Point(163, 132);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(54, 20);
             this.txtWidth.TabIndex = 4;
@@ -97,7 +98,7 @@
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(155, 170);
+            this.txtHeight.Location = new System.Drawing.Point(163, 174);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(54, 20);
             this.txtHeight.TabIndex = 5;
@@ -106,7 +107,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(104, 443);
+            this.btnSave.Location = new System.Drawing.Point(112, 447);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -117,7 +118,7 @@
             // lblDirectory
             // 
             this.lblDirectory.AutoSize = true;
-            this.lblDirectory.Location = new System.Drawing.Point(12, 325);
+            this.lblDirectory.Location = new System.Drawing.Point(20, 329);
             this.lblDirectory.Name = "lblDirectory";
             this.lblDirectory.Size = new System.Drawing.Size(77, 13);
             this.lblDirectory.TabIndex = 7;
@@ -126,7 +127,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(12, 375);
+            this.lblName.Location = new System.Drawing.Point(20, 379);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(54, 13);
             this.lblName.TabIndex = 8;
@@ -134,7 +135,7 @@
             // 
             // txtDir
             // 
-            this.txtDir.Location = new System.Drawing.Point(15, 341);
+            this.txtDir.Location = new System.Drawing.Point(23, 345);
             this.txtDir.Name = "txtDir";
             this.txtDir.Size = new System.Drawing.Size(199, 20);
             this.txtDir.TabIndex = 9;
@@ -142,7 +143,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(15, 391);
+            this.txtName.Location = new System.Drawing.Point(23, 395);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(263, 20);
             this.txtName.TabIndex = 10;
@@ -150,7 +151,7 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(220, 340);
+            this.btnBrowse.Location = new System.Drawing.Point(228, 344);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(58, 23);
             this.btnBrowse.TabIndex = 11;
@@ -161,7 +162,7 @@
             // cmbAlgorithm
             // 
             this.cmbAlgorithm.FormattingEnabled = true;
-            this.cmbAlgorithm.Location = new System.Drawing.Point(15, 81);
+            this.cmbAlgorithm.Location = new System.Drawing.Point(23, 85);
             this.cmbAlgorithm.Name = "cmbAlgorithm";
             this.cmbAlgorithm.Size = new System.Drawing.Size(263, 21);
             this.cmbAlgorithm.TabIndex = 12;
@@ -169,17 +170,27 @@
             // lblAlgorithm
             // 
             this.lblAlgorithm.AutoSize = true;
-            this.lblAlgorithm.Location = new System.Drawing.Point(12, 65);
+            this.lblAlgorithm.Location = new System.Drawing.Point(20, 69);
             this.lblAlgorithm.Name = "lblAlgorithm";
             this.lblAlgorithm.Size = new System.Drawing.Size(134, 13);
             this.lblAlgorithm.TabIndex = 13;
             this.lblAlgorithm.Text = "Maze Generation Algorithm";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(319, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Maze Preview";
             // 
             // MazeImageWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 525);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAlgorithm);
             this.Controls.Add(this.cmbAlgorithm);
             this.Controls.Add(this.btnBrowse);
@@ -218,6 +229,7 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.ComboBox cmbAlgorithm;
         private System.Windows.Forms.Label lblAlgorithm;
+        private System.Windows.Forms.Label label1;
     }
 }
 
