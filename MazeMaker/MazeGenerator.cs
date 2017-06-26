@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 namespace MazeMaker
 {
     //Co-ordinates for a wall position
-    struct Tile
+    class Tile
     {
         public int x, y;
+        public Tile(int x, int y)
+        {
+            this.x = x; this.y = y;
+        }
     }
 
     class MazeGenerator
@@ -31,7 +35,7 @@ namespace MazeMaker
         //Locate the bottom right path and return that position as the exit
         protected Tile findExit()
         {
-            Tile exit = new Tile();
+            Tile exit = new Tile(width - 1, height - 1);
 
             for (int i = 0; i < width; i++)
             {
@@ -39,8 +43,7 @@ namespace MazeMaker
                 {
                     if (mazeMap[i, j] == true)
                     {
-                        exit.x = i;
-                        exit.y = j;
+                        exit = new Tile(i, j);
                     }
                 }
             }
@@ -50,7 +53,7 @@ namespace MazeMaker
         //Locate the top left path and return that position as the entrance
         protected Tile findEntrance()
         {
-            Tile entrance = new Tile();
+            Tile entrance = new Tile(0, 0);
 
             for (int i = width - 1; i > 0; i--)
             {
@@ -58,8 +61,7 @@ namespace MazeMaker
                 {
                     if (mazeMap[i, j] == true)
                     {
-                        entrance.x = i;
-                        entrance.y = j;
+                        entrance = new Tile (i, j);
                     }
                 }
             }

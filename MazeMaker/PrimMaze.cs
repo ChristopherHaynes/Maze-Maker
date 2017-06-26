@@ -98,31 +98,31 @@ namespace MazeMaker
         //Add surrounding walls to the wall list
         private void updateWallList(int tileX, int tileY)
         {
-            Tile newWall = new Tile();
+            Tile newWall;
 
             //North
             if (tileY + 1 < height && mazeMap[tileX, tileY + 2] == false)
             {
-                    newWall.x = tileX;  newWall.y = tileY + 2;
-                    wallList.Add(newWall);
+                newWall = new Tile(tileX, tileY + 2);
+                wallList.Add(newWall);
             }
             //East
             if (tileX + 1 < width && mazeMap[tileX + 2, tileY] == false)
             {
-                    newWall.x = tileX + 2; newWall.y = tileY;
-                    wallList.Add(newWall);
+                newWall = new Tile(tileX + 2, tileY);
+                wallList.Add(newWall);
             }
             //South
             if (tileY - 2 > 0 && mazeMap[tileX, tileY - 2] == false)
             {             
-                    newWall.x = tileX; newWall.y = tileY - 2;
-                    wallList.Add(newWall);
+                newWall = new Tile(tileX, tileY - 2);
+                wallList.Add(newWall);
             }
             //West
             if (tileX - 2 > 0 && mazeMap[tileX - 2, tileY] == false)
             {
-                    newWall.x = tileX - 2; newWall.y = tileY;
-                    wallList.Add(newWall);
+                newWall = new Tile(tileX - 2, tileY);
+                wallList.Add(newWall);
             }
         }   
     }

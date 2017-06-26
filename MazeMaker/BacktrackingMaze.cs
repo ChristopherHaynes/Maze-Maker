@@ -26,8 +26,7 @@ namespace MazeMaker
             mazeMap[startX, startY] = true;
 
             //Push the first position onto the "Stack"
-            Tile startWall = new Tile();
-            startWall.x = startX; startWall.y = startY;
+            Tile startWall = new Tile(startX, startY);
             pathList.Add(startWall);
         }
 
@@ -71,31 +70,27 @@ namespace MazeMaker
             {
                 int index = rand.Next(directions.Count);
                 string direct = directions[index];
-                Tile newPos = new Tile();
+                Tile newPos = new Tile(0,0);
 
                 if (direct == "N")
                 {
                     mazeMap[x, y + 2] = true; mazeMap[x, y + 1] = true;
-                    newPos.x = x;
-                    newPos.y = y + 2;
+                    newPos = new Tile(x, y + 2);
                 }
                 if (direct == "E")
                 {
                     mazeMap[x + 2, y] = true; mazeMap[x + 1, y] = true;
-                    newPos.x = x + 2;
-                    newPos.y = y;
+                    newPos = new Tile(x + 2, y);
                 }
                 if (direct == "S")
                 {
                     mazeMap[x, y - 2] = true; mazeMap[x, y - 1] = true;
-                    newPos.x = x;
-                    newPos.y = y - 2;
+                    newPos = new Tile(x, y - 2);
                 }
                 if (direct == "W")
                 {
                     mazeMap[x - 2, y] = true; mazeMap[x - 1, y] = true;
-                    newPos.x = x - 2;
-                    newPos.y = y;
+                    newPos = new Tile(x - 2, y);
                 }
                 pathList.Add(newPos);
             }

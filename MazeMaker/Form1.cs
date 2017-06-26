@@ -23,9 +23,11 @@ namespace MazeMaker
             NameValue prim = new NameValue("Prim's Algorithm", "0");
             NameValue backtrack = new NameValue("Recursive Backtracking", "1");
             NameValue kruskal = new NameValue("Kruskal's Algorithm", "2");
+            NameValue eller = new NameValue("Eller's Algorithm", "3");
             cmbAlgorithm.Items.Add(prim);
             cmbAlgorithm.Items.Add(backtrack);
             cmbAlgorithm.Items.Add(kruskal);
+            cmbAlgorithm.Items.Add(eller);
             cmbAlgorithm.SelectedIndex = 0;
 
             //Fill the preview box with a black white gradient
@@ -79,6 +81,7 @@ namespace MazeMaker
                 if (dropdownSelection == 0) { mazeGen = new PrimMaze(width, height); }
                 if (dropdownSelection == 1) { mazeGen = new BacktrackingMaze(width, height); }
                 if (dropdownSelection == 2) { mazeGen = new KruskalMaze(width, height); }
+                if (dropdownSelection == 3) { mazeGen = new EllerMaze(width, height); }
 
                 bmp = new BitmapCreator();
                 bmp.generateBitmap(mazeGen.generateMaze());
@@ -90,6 +93,7 @@ namespace MazeMaker
                 if (type == 0) { typeName = "Prim_"; }
                 if (type == 1) { typeName = "Backtrack_"; }
                 if (type == 2) { typeName = "Kruskal_"; }
+                if (type == 3) { typeName = "Eller_"; }
 
                 string size = width.ToString() + "X" + height.ToString();
 
