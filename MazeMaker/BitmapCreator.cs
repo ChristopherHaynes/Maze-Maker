@@ -39,7 +39,7 @@ namespace MazeMaker
 
         public void saveBitmap(string dir)
         {
-            mazeImage.Save(dir);
+            mazeImage.Save(dir, ImageFormat.Bmp);
         }       
     }
 }

@@ -124,7 +124,13 @@ namespace MazeMaker
             string dir = txtDir.Text;
             string name = txtName.Text;
 
-            if (Directory.Exists(dir))
+            // Ensure dir ends in a "/"
+            if (!dir.Substring(dir.Length - 1).Equals("\\"))
+            {
+                dir += "\\";
+            }
+
+            if (Directory.Exists(dir) && hasWriteAccessToFolder(dir))
             {
                 string saveLocation = dir + name + ".bmp";
 
@@ -132,7 +138,7 @@ namespace MazeMaker
             }
             else
             {
-               MessageBox.Show("The requested save directory doesn't exist", "Directory Invalid",
+               MessageBox.Show("The requested save directory doesn't exist or you don't have permission to write to this directory", "Directory Invalid",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -143,6 +149,22 @@ namespace MazeMaker
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 txtDir.Text = fbd.SelectedPath;
+            }
+        }
+
+        //From Chris B on Stack Overflow
+        private bool hasWriteAccessToFolder(string folderPath)
+        {
+            try
+            {
+                // Attempt to get a list of security permissions from the folder. 
+                // This will raise an exception if the path is read only or do not have access to view the permissions. 
+                System.Security.AccessControl.DirectorySecurity ds = Directory.GetAccessControl(folderPath);
+                return true;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return false;
             }
         }
     }
